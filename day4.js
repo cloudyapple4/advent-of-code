@@ -66,6 +66,30 @@ for (line of lines) {
 }
 console.log(sum);
 
+
+// part 2
+let count2 = 0;
+const re2 = /MAS|SAM/
+lines = data.split("\n");
+
+for (let x = 1; x < width - 1; x++) {
+    for (let y = 1; y < height - 1; y++) {
+        if (lines[y][x] === "A") {
+            let downRight = [lines[y-1][x-1], "A", lines[y+1][x+1]].join(''); 
+            let upRight = [lines[y+1][x-1], "A", lines[y-1][x+1]].join(''); 
+            if (re2.test(downRight) && re2.test(upRight)) {
+                count2++;
+            }
+        }
+        
+   }
+}
+
+console.log(count2);
+//
+//
+//
+
 // return up right diagonal string
 function upDiagonal(startX, startY, width, lines) {
     let string = "";
